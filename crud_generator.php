@@ -114,8 +114,6 @@
 <h1>Rhymix CRUD Generator</h1>
 <p>XE/라이믹스에서 매번 만들기 귀찮은 DB CRUD 쿼리를 자동으로 생성해줍니다.</p>
 
-
-
 <form method="POST" id="codeplace">
 <textarea id="code_input" name="code" placeholder="XML Scheme를 입력해주세요" spellcheck="false" required="required"><?=htmlspecialchars( isset($_REQUEST['code']) ? $_REQUEST['code'] : "")?></textarea><br><br>
 <table class="help">
