@@ -115,14 +115,14 @@
 <p>XE/라이믹스에서 매번 만들기 귀찮은 DB CRUD 쿼리를 자동으로 생성해줍니다.</p>
 
 <form method="POST" id="codeplace">
-<textarea id="code_input" name="code" placeholder="XML Scheme를 입력해주세요" spellcheck="false" required="required"><?=htmlspecialchars($_REQUEST['code'])?></textarea><br><br>
+<textarea id="code_input" name="code" placeholder="XML Scheme를 입력해주세요" spellcheck="false" required="required"><?=htmlspecialchars( isset($_REQUEST['code']) ? $_REQUEST['code'] : "")?></textarea><br><br>
 <table class="help">
 <tr>
     <td colspan="3"><hr></td>
 </tr>
 <tr>
     <td style="padding-left: 16px;">쿼리 이름</td>
-    <td style="padding-left: 16px;"><input type="text" name="query_name" placeholder="쿼리 이름" value="<?=$_REQUEST['query_name']?>"></td>
+    <td style="padding-left: 16px;"><input type="text" name="query_name" placeholder="쿼리 이름" value="<?= isset($_REQUEST['query_name']) ? $_REQUEST['query_name'] : ""?>"></td>
     <td style="padding-left: 16px;"><span style="color: #666">insert{쿼리명}, get{쿼리명}, delete{쿼리명}과 같이 쿼리명 부분에 들어갈 단어입니다. <br>기본적으로 입력하지 않아도 상관없으나, 테이블의 언더바 뒤 제일 마지막 단어가 복수형 단어인 경우, 여기에 단수형 단어를 입력해주세요.<br>ex) 테이블명이 hotoboard_documents 일 경우, document 입력.</span></td>
 </tr>
 <tr>
@@ -130,7 +130,7 @@
 </tr>
 <tr>
     <td style="padding-left: 16px;">모듈 이름</td>
-    <td style="padding-left: 16px;"><input type="text" name="module_name" placeholder="모듈 이름" value="<?=$_REQUEST['module_name']?>"></td>
+    <td style="padding-left: 16px;"><input type="text" name="module_name" placeholder="모듈 이름" value="<?=isset($_REQUEST['module_name']) ? $_REQUEST['module_name'] : ""?>"></td>
     <td style="padding-left: 16px;"><span style="color: #666">모듈의 이름을 입력해주세요. 미 입력시 기본적으로 테이블 언더바 기준 제일 첫번째 글자가 사용됩니다.<br>ex) 미입력시 테이블명이 hotoboard_documents 일 경우, hotoboard 사용.</span></td>
 </tr>
 <tr>
@@ -138,7 +138,7 @@
 </tr>
 <tr>
     <td style="padding-left: 16px;">검색 조건 컬럼</td>
-    <td style="padding-left: 16px;"><input type="text" name="condition_key" placeholder="검색 조건에 들어갈 컬럼" value="<?=$_REQUEST['condition_key']?>"></td>
+    <td style="padding-left: 16px;"><input type="text" name="condition_key" placeholder="검색 조건에 들어갈 컬럼" value="<?=isset($_REQUEST['condition_key']) ? $_REQUEST['condition_key'] : ""?>"></td>
     <td style="padding-left: 16px;"><span style="color: #666">Primary Key 대신에 검색 조건에 넣고싶은 컬럼을 입력해주세요. 여러개는 ',' 콤마로 구분됩니다. <br>미입력시 Primary Key 속성을 가진 컬럼이 condition절에 들어갑니다.</span></td>
 </tr>
 <tr>
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function(){
 <?php
 date_default_timezone_set('Asia/Seoul');
 
-$myXMLData = $_REQUEST['code'];
+$myXMLData = isset($_REQUEST['code']) ? $_REQUEST['code'] : "";
 if(empty($myXMLData)) die;
 
 $xml=simplexml_load_string($myXMLData) or die("Error: Cannot create object");
