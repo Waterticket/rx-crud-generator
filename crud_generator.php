@@ -146,7 +146,7 @@
 </tr>
 </table>
 <br>
-<p style="color:red">※ 코드창에서 <b>Ctrl+Enter</b> 혹은 <b>Ctrl+S</b> 입력시 자동 Submit 됩니다.</p>
+<p style="color:red">※ 코드창에서 <b>Ctrl(Command)+Enter</b> 혹은 <b>Ctrl(Command)+S</b> 입력시 자동 Submit 됩니다.</p>
 <input type="submit" value="Generate">
 </form>
 <br>
@@ -155,14 +155,14 @@
 <script>
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('code_input').addEventListener('keydown', function (e){
-        // if press ctrl+enter
-        if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey)
+        // if press ctrl(command)+enter
+        if ((event.keyCode == 10 || event.keyCode == 13) && (event.ctrlKey || event.metaKey))
         {
             document.getElementById('codeplace').submit();
         }
 
-        // if press ctrl+s
-        if (event.ctrlKey && event.keyCode == 83) {
+        // if press ctrl(command)+s
+        if ((event.ctrlKey || event.metaKey) && event.keyCode == 83) {
             event.preventDefault();
             document.getElementById('codeplace').submit();
         }
