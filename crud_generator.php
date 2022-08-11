@@ -609,7 +609,7 @@ foreach($xml->children() as $column)
         throw new \Rhymix\Framework\Exceptions\DBError(sprintf("DB Error: %s in %s line %s", $output->getMessage(), __FILE__, __LINE__));
     }
 
-    return $output->data;
+    return $output->data ?: new \stdClass();
 }
 
 <?php
@@ -653,7 +653,7 @@ foreach($xml->children() as $column)
         throw new \Rhymix\Framework\Exceptions\DBError(sprintf("DB Error: %s in %s line %s", $output->getMessage(), __FILE__, __LINE__));
     }
 
-    return $output->data;
+    return $output->data ?: array();
 }
 
 
